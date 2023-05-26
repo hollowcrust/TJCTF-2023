@@ -47,13 +47,13 @@ inp = [1]*flag_length
 l3 =[0]*n
 ```
 
-### Key observations
-1. Match the `return` calls to the corresponding functions.
-2. All lines `lst` belong to `recur(lst)` function.
+### Key observations/steps
+1. Separate the `def` and match the `return` calls to the corresponding functions.
+2. All lines containing `lst` belong to `recur(lst)` function.
 3. `flag`, `l`, `l2`, `l3`, `l4` are related to each other --> They are in the same function `decrypt(inp)`.
-4. Some lists assign the 0-th element separately. Use this to determine the correct `for` loop traversal (`range(n)` or `range(1, n)`).
+4. Some lists assign the 0-th element separately. Use this to determine the correct `for` loop traversals (`range(n)` or `range(1, n)`).
 
-### Unscrambled code
+### Unscrambled chal.py
 ```python
 #first 3 lines are given
 import random
