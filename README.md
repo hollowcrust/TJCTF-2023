@@ -27,7 +27,7 @@ This repository contains the writeups to the challenges that I solved, which are
   5. dream
 
 ### Web
-  1.
-  2.
+  1. hi
+  2. swill-squill
 <br/>
 Have fun reading! :)
