@@ -362,3 +362,124 @@ print(flag)
 tjctf{randomfifteenmorelet}
 ```
 
+## #4: maybe
+
+### Description/Sources
+
+### Decompiled code (Hex-Rays)
+```C
+//Unimportant lines ommitted
+
+_BYTE flag[29] =
+{
+  18,
+  17,
+  0,
+  21,
+  11,
+  72,
+  60,
+  18,
+  12,
+  68,
+  0,
+  16,
+  81,
+  25,
+  46,
+  22,
+  3,
+  28,
+  66,
+  17,
+  10,
+  74,
+  114,
+  86,
+  13,
+  122,
+  116,
+  79,
+  0
+};
+
+//Unimportant lines ommitted
+
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int i; // [rsp+Ch] [rbp-64h]
+  char s[72]; // [rsp+10h] [rbp-60h] BYREF
+  unsigned __int64 v6; // [rsp+58h] [rbp-18h]
+
+  v6 = __readfsqword(0x28u);
+  puts("Enter your flag");
+  fgets(s, 64, _bss_start);
+  if ( strlen(s) == 33 )
+  {
+    for ( i = 4; i < strlen(s) - 1; ++i )
+    {
+      if ( ((unsigned __int8)s[i - 4] ^ (unsigned __int8)s[i]) != flag[i - 4] )
+      {
+        puts("you're def wrong smh");
+        return 1;
+      }
+    }
+    puts("you might be right??? you might be wrong.... who knows?");
+    return 0;
+  }
+  else
+  {
+    puts("bad");
+    return 1;
+  }
+}
+```
+
+### Key observations/steps
+1. The flag is 33 characters long (not so important but useful when writing script). 
+2. The program is checking whether `s[i-4] ^ s[i] == flag[i-4]`, starting from the 4th character (0th-indexed).
+3. The flag always starts with `tjctf{`, which means we can construct the whole flag using the fact that `flag[i-4] ^ s[i-4] = s[i]`
+
+### Solution code (in Python)
+```Python
+a = [18,
+  17,
+  0,
+  21,
+  11,
+  72,
+  60,
+  18,
+  12,
+  68,
+  0,
+  16,
+  81,
+  25,
+  46,
+  22,
+  3,
+  28,
+  66,
+  17,
+  10,
+  74,
+  114,
+  86,
+  13,
+  122,
+  116,
+  79,
+  0]
+
+flag = 'tjctf{'
+for i in range(6, 33):
+    flag += chr(ord(flag[i-4]) ^ a[i-4])
+print(flag)
+```
+
+### Flag
+```
+tjctf{cam3_saw_c0nqu3r3d98A24B5}
+```
+
