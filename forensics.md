@@ -24,7 +24,7 @@
 ### Description/Source <br />
   <img width="699" alt="Screenshot 2023-05-26 at 18 09 21" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/80277bd5-ab28-43a5-af81-65822775725c"><br/><br/>
   
-  Using binwalk, we can extract an underlying password-protected zip file. Checking the EXIF of the original image gives:<br/><br/>
+  Using binwalk, we can extract an underlying password-protected zip file. Checking the EXIF of the original image using exiftool gives:<br/><br/>
   <img width="532" alt="Screenshot 2023-05-26 at 18 12 39" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/2f2a0c0d-29b7-471f-a381-5037e52720a9"><br/><br/>
   The title of the image is indicated as `panda_d02b3ab3`. Use this as the password and unlock the zip file, which gives `flag.txt` file with the flag
   
