@@ -108,3 +108,151 @@ main()
 ```
 tjctf{unshuffling_scripts_xdfj}
 ```
+
+## #2: wtmoo
+
+### Description/Sources
+
+### Decompiled code (Hex-Rays)
+```C
+//Unimportant lines omitted
+
+char *flag = "8.'8*{;8m33[o[3[3[%\")#*\\}";
+
+//Unimportant lines omitted
+
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int i; // [rsp+8h] [rbp-58h]
+  int v5; // [rsp+Ch] [rbp-54h]
+  char s[32]; // [rsp+10h] [rbp-50h] BYREF
+  char dest[40]; // [rsp+30h] [rbp-30h] BYREF
+  unsigned __int64 v8; // [rsp+58h] [rbp-8h]
+
+  v8 = __readfsqword(0x28u);
+  printf("Enter text: ");
+  fgets(s, 32, _bss_start);
+  s[strlen(s) - 1] = 0;
+  strcpy(dest, s);
+  v5 = strlen(s);
+  for ( i = 0; i < v5; ++i )
+  {
+    if ( s[i] <= 96 || s[i] > 122 )
+    {
+      if ( s[i] <= 64 || s[i] > 90 )
+      {
+        if ( s[i] <= 47 || s[i] > 52 )
+        {
+          if ( s[i] <= 52 || s[i] > 57 )
+          {
+            if ( s[i] != 123 && s[i] != 125 )
+            {
+              puts("wtmoo is this guess???");
+              printf("%c\n", (unsigned int)s[i]);
+              return 1;
+            }
+          }
+          else
+          {
+            s[i] -= 21;
+          }
+        }
+        else
+        {
+          s[i] += 43;
+        }
+      }
+      else
+      {
+        s[i] += 32;
+      }
+    }
+    else
+    {
+      s[i] -= 60;
+    }
+  }
+  if ( !strcmp(s, flag) )
+    printf(cow, dest);
+  else
+    printf(cow, s);
+  return 0;
+}
+```
+
+### Key observations/steps:
+1. This is some sort of substitution cipher (or one-to-one mapping) where each character in the string is replaced by another character
+2. The characters are independent of each other, i.e. changing 1 character in the original string does not affect the remaining characters in the resulting string.
+3. Run the algorithm above with `s` as the string `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`. The encoded string becomes `[\]^_ !"#$abcdefghijklmnopqrstuvwxyz%&'()*+,-./0123456789:;<=>`
+4. Map each character in `8.'8*{;8m33[o[3[3[%")#*\}` to the decoded string and obtain the flag.
+
+### Solution code (in C++)
+```Cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  int i;
+  int v5;
+  string flag = "8.'8*{;8m33[o[3[3[%\")#*\\}";
+  string s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  string s2 = s;
+  v5 = 62;
+  for ( i = 0; i < v5; ++i )
+  {
+    if ( s[i] <= 96 || s[i] > 122 )
+    {
+      if ( s[i] <= 64 || s[i] > 90 )
+      {
+        if ( s[i] <= 47 || s[i] > 52 )
+        {
+          if ( s[i] <= 52 || s[i] > 57 )
+          {
+            if ( s[i] != 123 && s[i] != 125 )
+            {
+              puts("wtmoo is this guess???");
+              printf("%c\n", (unsigned int)s[i]);
+              return 1;
+            }
+          }
+          else
+          {
+            s[i] -= 21;
+          }
+        }
+        else
+        {
+          s[i] += 43;
+        }
+      }
+      else
+      {
+        s[i] += 32;
+      }
+    }
+    else
+    {
+      s[i] -= 60;
+    }
+  }
+  
+  //Decoding flag string
+  for(i = 0; i < 26; i++) {
+    for(int j = 0; j < 62; j++) {
+      if(s[j] == flag[i]) {
+        flag[i] = s2[j];
+        break;
+      }
+    }
+  }
+  
+  cout << flag;
+  return 0;
+}
+```
+
+### Flag
+```
+tjctf{wtMoo0O0o0o0a7e8f1}
+```
