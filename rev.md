@@ -183,9 +183,9 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 ```
 
 ### Key observations/steps
-1. This is some sort of substitution cipher (or one-to-one mapping) where each character in the string is replaced by another character
+1. This is some sort of substitution cipher (or one-to-one mapping) where each character in the string is replaced by another character.
 2. The characters are independent of each other, i.e. changing 1 character in the original string does not affect the remaining characters in the resulting string.
-3. Run the algorithm above with `s` as the string `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`. The encoded string becomes `[\]^_ !"#$abcdefghijklmnopqrstuvwxyz%&'()*+,-./0123456789:;<=>`
+3. Run the algorithm above with `s` as the string `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`. The encoded string becomes `[\]^_ !"#$abcdefghijklmnopqrstuvwxyz%&'()*+,-./0123456789:;<=>`.
 4. Map each character in `8.'8*{;8m33[o[3[3[%")#*\}` to the decoded string and obtain the flag.
 
 ### Solution code (in C++)
@@ -316,11 +316,11 @@ else:
    
 2. For `op2(b)`:
    - The `for` loop is redundant because `b[i] ^ 69 ^ 69 = b[i]`, so xor-ing `b[i]` 100 times with 69 does not change `b[i]` at all.
-   - <strong>How to reverse</strong>: `b[i] -= 12`
+   - <strong>How to reverse</strong>: `b[i] -= 12`.
 
 3. For `op3(b)`:
    - The 8th bit (counting from right to left) of the <strong>updated</strong> `b[i]` stores the parity of the <strong>original</strong> `b[i]`, i.e. (0 if even and 1 if odd).
-   - <strong>How to reverse</strong>: `b[i] >> 7` gives the 8th bit of `b[i]`, and `b[i] & ((1 << k) - 1)` turns off the `(k+1)-th` bit of `b[i]`
+   - <strong>How to reverse</strong>: `b[i] >> 7` gives the 8th bit of `b[i]`, and `b[i] & ((1 << k) - 1)` turns off the `(k+1)-th` bit of `b[i]`.
 
 4. For `recur(b)`:
    - The 3 operations above are initially applied to `b` character-by-character, then groups of 3, groups of 9, etc. 
@@ -437,8 +437,8 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 
 ### Key observations/steps
 1. The flag is 33 characters long (not so important but useful when writing script). 
-2. The program is checking whether `s[i-4] ^ s[i] == flag[i-4]`, starting from the 4th character (0th-indexed).
-3. The flag always starts with `tjctf{`, which means we can construct the whole flag using the fact that `flag[i-4] ^ s[i-4] = s[i]`
+2. The program is checking whether `s[i-4] ^ s[i] == flag[i-4]`, starting from the 4th character (0-indexed).
+3. The flag always starts with `tjctf{`, which means we can construct the whole flag using the fact that `flag[i-4] ^ s[i-4] = s[i]`.
 
 ### Solution code (in Python)
 ```Python
