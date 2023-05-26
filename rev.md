@@ -111,7 +111,9 @@ tjctf{unshuffling_scripts_xdfj}
 
 ## #2: wtmoo
 
-### Description/Sources
+### Description/Sources<br/>
+
+<img width="698" alt="Screenshot 2023-05-26 at 21 31 52" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/bd25bd72-dacb-4ce7-af08-e21aaafa1014"><br/>
 
 ### Decompiled code (Hex-Rays)
 ```C
@@ -180,7 +182,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 }
 ```
 
-### Key observations/steps:
+### Key observations/steps
 1. This is some sort of substitution cipher (or one-to-one mapping) where each character in the string is replaced by another character
 2. The characters are independent of each other, i.e. changing 1 character in the original string does not affect the remaining characters in the resulting string.
 3. Run the algorithm above with `s` as the string `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`. The encoded string becomes `[\]^_ !"#$abcdefghijklmnopqrstuvwxyz%&'()*+,-./0123456789:;<=>`
@@ -256,3 +258,107 @@ int main() {
 ```
 tjctf{wtMoo0O0o0o0a7e8f1}
 ```
+
+## #3: div3rev
+
+### Description/Sources<br/>
+
+<img width="697" alt="Screenshot 2023-05-26 at 21 34 04" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/fa81407f-40bd-455e-96f5-aaef5673a609"><br/>
+
+### chal.py
+```Python
+def op1(b):
+    for i in range(len(b)):
+        b[i] += 8*(((b[i] % 10)*b[i]+75) & 1)
+        cur = 1
+        for j in range(420):
+            cur *= (b[i]+j) % 420
+    return b
+
+
+def op2(b):
+    for i in range(len(b)):
+        for j in range(100):
+            b[i] = b[i] ^ 69
+        b[i] += 12
+    return b
+
+
+def op3(b):
+    for i in range(len(b)):
+        b[i] = ((b[i] % 2) << 7)+(b[i]//2)
+    return b
+
+
+def recur(b):
+    if len(b) == 1:
+        return b
+    assert len(b) % 3 == 0
+    a = len(b)
+    return op1(recur(b[0:a//3]))+op2(recur(b[a//3:2*a//3]))+op3(recur(b[2*a//3:]))
+
+
+flag = ""
+b = bytearray()
+b.extend(map(ord, flag))
+res = recur(b)
+if res == b'\x8c\x86\xb1\x90\x86\xc9=\xbe\x9b\x80\x87\xca\x86\x8dKJ\xc4e?\xbc\xdbC\xbe!Y \xaf':
+    print("correct")
+else:
+    print("oopsies")
+```
+
+### Key observations/steps
+1. For `op1(b)`:
+    - `b[i] += 8*(((b[i] % 10)*b[i]+75) & 1)` can be intepreted as `b[i] += 8 if b[i] is even; else b[i] += 0`.
+    - The `cur` is just a distraction since the function returns `b` not `cur`, and `cur` is not used elsewhere.
+    - <strong>How to reverse</strong>: `b[i] -= 8 if b[i] is even; else continue`.
+   
+2. For `op2(b)`:
+   - The `for` loop is redundant because `b[i] ^ 69 ^ 69 = b[i]`, so xor-ing `b[i]` 100 times with 69 does not change `b[i]` at all.
+   - <strong>How to reverse</strong>: `b[i] -= 12`
+
+3. For `op3(b)`:
+   - The 8th bit (counting from right to left) of the <strong>updated</strong> `b[i]` stores the parity of the <strong>original</strong> `b[i]`, i.e. (0 if even and 1 if odd).
+   - <strong>How to reverse</strong>: `b[i] >> 7` gives the 8th bit of `b[i]`, and `b[i] & ((1 << k) - 1)` turns off the `(k+1)-th` bit of `b[i]`
+
+4. For `recur(b)`:
+   - The 3 operations above are initially applied to `b` character-by-character, then groups of 3, groups of 9, etc. 
+   - <strong>How to reverse</strong>: Apply the operations to the whole string, only then start recurring with smaller strings. So `recur(op1(b[0:a//3]))` will reverse the effect of `op1(recur(b[0:a//3]))` in the original code (`op2` and `op3` are also similar).
+
+### Solution code (in Python)
+```Python
+def op1(b):
+    for i in range(len(b)):
+        b[i] -= 8 * (1 - (b[i] & 1))
+    return b
+
+def op2(b):
+    for i in range(len(b)):
+        b[i] -= 12
+    return b
+
+
+def op3(b):
+    for i in range(len(b)):
+        b[i] = (b[i] >> 7) + (b[i] & ((1 << 7)-1)) * 2
+    return b
+
+
+def recur(b):
+    if len(b) == 1:
+        return b
+    assert len(b) % 3 == 0
+    a = len(b)
+    return recur(op1(b[0:a//3]))+recur(op2(b[a//3:2*a//3]))+recur(op3(b[2*a//3:]))
+
+b = bytearray(b'\x8c\x86\xb1\x90\x86\xc9=\xbe\x9b\x80\x87\xca\x86\x8dKJ\xc4e?\xbc\xdbC\xbe!Y \xaf')
+flag = recur(b).decode('utf-8')
+print(flag)
+```
+
+### Flag
+```
+tjctf{randomfifteenmorelet}
+```
+
