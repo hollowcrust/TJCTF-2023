@@ -9,11 +9,25 @@ My team managed to get ___ place in the competition, with __ / 38 challenges sol
 
 This repository contains the writeups to the challenges that I solved, which are:<br/>
 
-1. Crypto
-    - baby-rsa
+### Crypto
+  1. baby-rsa
 
-2. Forensics
-  - beep-boop-robot
-  - 
-```
+### Forensics
+  1. beep-boop-robot
+  2. nothing-to-see
+
+### Misc
+  1. discord
+
+### Rev
+  1. scramble
+  2. wtmoo
+  3. div3rev
+  4. maybe
+  5. dream
+
+### Web
+  1.
+  2.
+<br/>
 Have fun reading! :)
