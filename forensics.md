@@ -2,8 +2,9 @@
 
 ## #1: beep-boop-robot
 
-### Description/Source <br />
-  <img width="696" alt="Screenshot 2023-05-26 at 17 47 49" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/b3fc0d63-2d70-439c-be01-c8d3a298597a"><br /><br />
+### Description/Sources<br />
+
+<img width="698" alt="Screenshot 2023-05-26 at 22 09 18" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/442789f0-63b7-4294-9d3c-5a638f0a4b7f"><br />
   
   https://github.com/hollowcrust/TJCTF-2023/assets/72879387/a284d3fe-a4ec-49e2-a64e-6f34a644ac52
   
@@ -21,12 +22,13 @@
   
 ## #2: nothing-to-see <br/>
 
-### Description/Source <br />
-  <img width="699" alt="Screenshot 2023-05-26 at 18 09 21" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/80277bd5-ab28-43a5-af81-65822775725c"><br/><br/>
+### Description/Sources<br />
+
+<img width="696" alt="Screenshot 2023-05-26 at 22 10 12" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/42f45a61-4362-4ef9-89b1-d210faf9a7a1"><br/>
   
-  Using binwalk, we can extract an underlying password-protected zip file. Checking the EXIF of the original image using exiftool gives:<br/><br/>
+  Using `binwalk` on the image, we can extract an underlying password-protected zip file. Checking the EXIF of the original image using `exiftool` gives:<br/><br/>
   <img width="532" alt="Screenshot 2023-05-26 at 18 12 39" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/2f2a0c0d-29b7-471f-a381-5037e52720a9"><br/><br/>
-  The title of the image is indicated as `panda_d02b3ab3`. Use this as the password and unlock the zip file, which gives `flag.txt` file with the flag
+  The title of the image is indicated as `panda_d02b3ab3`. Use this as the password and unlock the zip file, which gives `flag.txt` file with the flag.
   
 ### Flag <br />
   ```
