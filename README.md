@@ -11,6 +11,7 @@ This repository contains the writeups to the challenges that I solved, which are
 
 ### Crypto
   1. baby-rsa
+  2. ezdlp
 
 ### Forensics
   1. beep-boop-robot
