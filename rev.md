@@ -713,12 +713,12 @@ for i in range(1, 8):
     
 prod = []
 for f in factors:
-     for combi in f:
-         tmp = 1
-         for j in combi:
-             tmp *= j
-         if tmp not in prod:
-             prod.append(tmp)
+    for combi in f:
+        tmp = 1
+        for j in combi:
+            tmp *= j
+        if tmp not in prod:
+            prod.append(tmp)
 
 v6, v7 = 0, 0
 
