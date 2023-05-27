@@ -483,3 +483,15 @@ print(flag)
 tjctf{cam3_saw_c0nqu3r3d98A24B5}
 ```
 
+## #5: dream
+
+### Description/Sources
+
+
+
+### Decompiled code
+
+
+
+### Key observations/steps
+
