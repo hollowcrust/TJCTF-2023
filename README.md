@@ -7,7 +7,7 @@ My team managed to captured 19 / 39 flags (or 17 / 37 non-giveaway flags) throug
 
 <img width="340" alt="Screenshot 2023-05-26 at 20 04 26" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/625991e2-0cdc-498a-bb9c-902ae261efbb"><br/><br/>
 
-This repository contains the writeups to the challenges that I solved, which are:<br/>
+This repository contains the writeups to the challenges that I solved (except the giveaway ones in Misc), which are:<br/>
 
 ### Crypto
   1. baby-rsa
@@ -16,10 +16,6 @@ This repository contains the writeups to the challenges that I solved, which are
 ### Forensics
   1. beep-boop-robot
   2. nothing-to-see
-
-### Misc
-  1. discord (giveaway flag)
-  2. survey (giveaway flag)
 
 ### Rev
   1. scramble
