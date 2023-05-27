@@ -11,13 +11,13 @@
   Decoding the Morse code signals in the file either by hand or via https://morsecode.world/international/decoder/audio-decoder-adaptive.html gives the following message<br />
     
   ```
-  .... .. / .... --- .-- / .- .-. . / -.-- --- ..- / -.. --- .. -. --. .-.-.- / - .... . / ..-. .-.. .- --. / .. ... / - .--- -.-. - ..-. - .... .. ... .. ... .- .-.. .-.. --- -. . .-- --- .-. -..
+  .... .. / .... --- .-- / .- .-. . / -.-- --- ..- / -.. --- .. -. --. .-.-.- / - .... . / ..-. .-.. .- --. / .. ... / - .--- -.-. - ..-. - .... .. ... .. ... .- .-.. .-.. --- -. . .-- --- .-. -.. .-.. -- .- ---
   ```
-  which translates to: `HI HOW ARE YOU DOING. THE FLAG IS TJCTFTHISISALLONEWORD`<br/>
+  which translates to: `HI HOW ARE YOU DOING. THE FLAG IS TJCTFTHISISALLONEWORDLMAO`<br/>
   
 ### Flag  
   ```
-  tjctf{thisisalloneword}
+  tjctf{thisisallonewordlmao}
   ```
   
 ## #2: nothing-to-see <br/>
