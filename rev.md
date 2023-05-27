@@ -242,7 +242,7 @@ int main() {
   //Decoding flag string
   for(i = 0; i < 26; i++) {
     for(int j = 0; j < 62; j++) {
-      if(s[j] == flag[i]) {
+      if(flag[i] == s[j]) {
         flag[i] = s2[j];
         break;
       }
@@ -440,7 +440,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 ### Key observations/steps
 1. The flag is 33 characters long (not so important but useful when writing script). 
 2. The program is checking whether `s[i-4] ^ s[i] == flag[i-4]`, starting from the 4th character (0-indexed).
-3. The flag always starts with `tjctf{`, which means we can construct the whole flag using the fact that `flag[i-4] ^ s[i-4] = s[i]`.
+3. The flag always starts with `tjctf{`, which means we can construct the whole flag using the fact that `s[i] = flag[i-4] ^ s[i-4]`.
 
 ### Solution code (in Python)
 ```Python
