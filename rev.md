@@ -600,7 +600,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
     exit(0);
   }
 ```
-For the first part, just input `sing` and `maybe I asked for too [many challenges to be written]` when prompted.<br/>
+  - For the first part, just input `sing` and `maybe I asked for too [many challenges to be written]` when prompted.<br/>
 
 2.
 ```C
@@ -647,7 +647,7 @@ for i in prod:
      if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
          print(i, 0x33D5D816326AAD//i)
 ```
-Running the script gives only one pair of `(v6, v7)` of `(131313131, 111111111)`.<br/>
+  - Running the script gives only one pair of `(v6, v7)` of `(131313131, 111111111)`.<br/>
 
 3.
 ```C
