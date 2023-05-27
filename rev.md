@@ -485,13 +485,280 @@ tjctf{cam3_saw_c0nqu3r3d98A24B5}
 
 ## #5: dream
 
-### Description/Sources
+### Description/Sources<br/>
+<img width="696" alt="Screenshot 2023-05-27 at 10 58 35" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/ca457311-f6e8-44e8-9994-3a576736a9a8">
 
+### Decompiled code (Hex-Rays)
+```C
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v4; // [rsp+0h] [rbp-230h]
+  int i; // [rsp+4h] [rbp-22Ch]
+  unsigned __int64 v6; // [rsp+8h] [rbp-228h]
+  unsigned __int64 v7; // [rsp+10h] [rbp-220h]
+  FILE *stream; // [rsp+18h] [rbp-218h]
+  char s2[256]; // [rsp+20h] [rbp-210h] BYREF
+  char s[264]; // [rsp+120h] [rbp-110h] BYREF
+  unsigned __int64 v11; // [rsp+228h] [rbp-8h]
 
-
-### Decompiled code
-
-
+  v11 = __readfsqword(0x28u);
+  setbuf(stdout, 0LL);
+  type_text("last night, I had a dream...\ntaylor sw1ft, the dollar store version, appeared!\n");
+  prompt("what should I do? ", s2, 256);
+  if ( strcmp("sing", s2) )
+  {
+    puts("no, no, that's a bad idea.");
+    exit(0);
+  }
+  prompt("that's a great idea!\nI started to sing the following lyrics: ", s2, 256);
+  if ( strcmp("maybe I asked for too [many challenges to be written]", s2) )
+  {
+    puts("no, that's a dumb lyric.");
+    exit(0);
+  }
+  type_text("ok... that's a weird lyric but whatever\n");
+  prompt("that leads me to ask... how many challenges did you ask for??? ", s2, 256);
+  v6 = atol(s2);
+  if ( 35 * (((3 * v6) ^ 0xB6D8) % 0x521) % 0x5EB != 1370 )
+  {
+    type_text("that's a stupid number.\n");
+    exit(0);
+  }
+  prompt("ok yeah you're asking too much of everyone; try to lower the number??? ", s2, 256);
+  v7 = atol(s2);
+  if ( (35 * ((5 * v7 % 0x1E61) | 0x457) - 5) % 0x3E8 != 80 )
+  {
+    type_text("yeah.");
+    exit(0);
+  }
+  if ( v6 % v7 != 20202020 || v7 * v6 != 0x33D5D816326AADLL )
+  {
+    type_text("ok but they might think that's too much comparatively, duh.\n");
+    exit(0);
+  }
+  type_text("that's a lot more reasonable - good on you!\n");
+  usleep(0x124F8u);
+  type_text("ok, now that we've got that out of the way, back to the story...\n");
+  type_text("taylor was like, \"wow, you're so cool!\", and I said, \"no, you're so cool!\"\n");
+  type_text("after that, we kinda just sat in silence for a little bit. I could kinda tell I was losing her attention, so ");
+  v4 = 0;
+  for ( i = 0; i <= 11; ++i )
+  {
+    prompt("what should I do next? ", s2, 256);
+    if ( !strcmp("ask her about some flags", s2) )
+    {
+      ++v4;
+    }
+    else if ( !strcmp("ask her about her new album", s2) )
+    {
+      v4 *= v4;
+    }
+    else
+    {
+      if ( strcmp("ask her about her tour", s2) )
+      {
+        type_text("no, that's weird\n");
+        exit(0);
+      }
+      v4 += 22;
+    }
+  }
+  if ( v4 != 2351 )
+  {
+    type_text("taylor died of boredom\n");
+    exit(0);
+  }
+  type_text("taylor got sick and tired of me asking her about various topics, so she finally responded: ");
+  stream = fopen("flag.txt", "r");
+  if ( !stream )
+  {
+    type_text("no flag </3\n");
+    exit(0);
+  }
+  fgets(s, 256, stream);
+  type_text(s);
+  return 0;
+}
+```
 
 ### Key observations/steps
+1.
+```C
+  type_text("last night, I had a dream...\ntaylor sw1ft, the dollar store version, appeared!\n");
+  prompt("what should I do? ", s2, 256);
+  if ( strcmp("sing", s2) )
+  {
+    puts("no, no, that's a bad idea.");
+    exit(0);
+  }
+  prompt("that's a great idea!\nI started to sing the following lyrics: ", s2, 256);
+  if ( strcmp("maybe I asked for too [many challenges to be written]", s2) )
+  {
+    puts("no, that's a dumb lyric.");
+    exit(0);
+  }
+```
+For the first part, just input `sing` and `maybe I asked for too [many challenges to be written]` when prompted.<br/>
 
+2.
+```C
+  prompt("that leads me to ask... how many challenges did you ask for??? ", s2, 256);
+  v6 = atol(s2);
+  if ( 35 * (((3 * v6) ^ 0xB6D8) % 0x521) % 0x5EB != 1370 )
+  {
+    type_text("that's a stupid number.\n");
+    exit(0);
+  }
+  prompt("ok yeah you're asking too much of everyone; try to lower the number??? ", s2, 256);
+  v7 = atol(s2);
+  if ( (35 * ((5 * v7 % 0x1E61) | 0x457) - 5) % 0x3E8 != 80 )
+  {
+    type_text("yeah.");
+    exit(0);
+  }
+  if ( v6 % v7 != 20202020 || v7 * v6 != 0x33D5D816326AADLL )
+  {
+    type_text("ok but they might think that's too much comparatively, duh.\n");
+    exit(0);
+  }
+```
+  - Notice that we need to find suitable `v6` and `v7` such that eventually `v6 % v7 == 20202020 && v7 * v6 == 0x33D5D816326AADLL` to pass, which means `v6` and `v7` are factors of `0x33D5D816326AAD = 14590347874298541 = 3 x 3 x 29 x 37 x 409 x 11071 x 333667`.
+  - To find `v6` and `v7`, I used the following script which finds all possible values of `v6` and `v7` that passes the conditions `35 * (((3 * v6) ^ 0xB6D8) % 0x521) % 0x5EB == 1370` and `(35 * ((5 * v7 % 0x1E61) | 0x457) - 5) % 0x3E8 != 80` respectively.
+
+### Finding ~~Nemo~~ v6 and v7 (in Python)
+```Python
+import itertools
+factors = []
+prime = [3, 3, 29, 37, 409, 11071, 333667]
+for i in range(1, 8):
+    factors.append(list(map(list, itertools.combinations(prime, i))))
+    
+prod = []
+for f in factors:
+     for combi in f:
+         tmp = 1
+         for j in combi:
+             tmp *= j
+         if tmp not in prod:
+             prod.append(tmp)
+for i in prod:
+     if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
+         print(i, 0x33D5D816326AAD//i)
+```
+Running the script gives only one pair of `(v6, v7)` of `(131313131, 111111111)`.<br/>
+
+3.
+```C
+  v4 = 0;
+  for ( i = 0; i <= 11; ++i )
+  {
+    prompt("what should I do next? ", s2, 256);
+    if ( !strcmp("ask her about some flags", s2) )
+    {
+      ++v4;
+    }
+    else if ( !strcmp("ask her about her new album", s2) )
+    {
+      v4 *= v4;
+    }
+    else
+    {
+      if ( strcmp("ask her about her tour", s2) )
+      {
+        type_text("no, that's weird\n");
+        exit(0);
+      }
+      v4 += 22;
+    }
+  }
+  if ( v4 != 2351 )
+  {
+    type_text("taylor died of boredom\n");
+    exit(0);
+  }
+```
+  - There are 3 operations applied to `v4`: `+1`, `+22`, and `squaring v4`, and we have to achieve `2351` from `0` in <strong>exactly</strong> 12 operations.
+  - Using some quick maths `2351 = 48 ** 2 + 47 = (0 + 22 + 22 + 1 + 1 + 1 + 1) ** 2 + (22 + 22 + 1 + 1 + 1)` which uses exactly 12 operations. Hence one of the possible lists of input is
+```
+ask her about her tour
+ask her about her tour
+ask her about some flags
+ask her about some flags
+ask her about some flags
+ask her about some flags
+ask her about her new album
+ask her about her tour
+ask her about her tour
+ask her about some flags
+ask her about some flags
+ask her about some flags
+```
+<br/>
+
+4. Combining everything and we can obtain the flag. I recommend using `pwntools` to send the input.
+
+### Solution code (in Python)
+
+```Python
+import itertools
+from pwn import *
+
+#Pre-calculate v6 and v7 before connecting to server.
+factors = []
+prime = [3, 3, 29, 37, 409, 11071, 333667]
+for i in range(1, 8):
+    factors.append(list(map(list, itertools.combinations(prime, i))))
+    
+prod = []
+for f in factors:
+     for combi in f:
+         tmp = 1
+         for j in combi:
+             tmp *= j
+         if tmp not in prod:
+             prod.append(tmp)
+
+v6, v7 = 0, 0
+
+for i in prod:
+     if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
+         v6 = i
+         v7 = 0x33D5D816326AAD // i
+
+#for part 3
+op = ['ask her about some flags', 'ask her about her new album', 'ask her about her tour']
+responses = [2, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0] 
+
+#connecting to the server
+r = remote('tjc.tf', 31500)
+
+#part 1
+r.recvuntil(b'what should I do? ')
+r.sendline(b'sing')
+r.recvuntil(b'I started to sing the following lyrics: ')
+r.sendline(b'maybe I asked for too [many challenges to be written]')
+
+#part 2
+r.recvuntil(b'that leads me to ask... how many challenges did you ask for??? ')
+r.sendline(str(v6).encode('utf-8'))
+r.recvuntil(b'ok yeah you\'re asking too much of everyone; try to lower the number??? ')
+r.sendline(str(v7).encode('utf-8'))
+
+#part 3
+for i in range(12):
+    r.recvuntil(b'what should I do next? ')
+    r.sendline(str(op[responses[i]]).encode('utf-8'))
+    
+#get flag
+r.recvuntil(b'taylor got sick and tired of me asking her about various topics, so she finally responded: ')
+flag = r.recvline()
+print(flag)
+
+r.close()
+```
+<img width="460" alt="Screenshot 2023-05-27 at 10 58 09" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/50229faa-8e15-47c5-b5bf-52fddc270c67">
+
+### Flag
+```
+tjctf{5h3_ju5t_w4nt5_t0_st4y_1n_th4t_l4vend3r_h4z3_3a17362a}
+```
