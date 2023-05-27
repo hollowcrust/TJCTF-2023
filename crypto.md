@@ -36,7 +36,7 @@ p = 1229738390174058447015157731865115033798871680704931785142029847812893223284
 g^x = s mod p
 flag = tjctf{x}
 ```
-This is a Discrete Logarithm Problem (as suggested by the name dlp). Personally I used this <a href="https://www.alpertron.com.ar/DILOG.HTM">website</a> to help me calculate the value of `x`.<br/>
+This is a Discrete Logarithm Problem (as suggested by the name dlp). I used this <a href="https://www.alpertron.com.ar/DILOG.HTM">website</a> to help me calculate the value of `x`.<br/>
   
 <img width="1437" alt="Screenshot 2023-05-27 at 08 34 01" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/1ad71e7c-d92c-4169-9eae-32afa498ed62"><br/>
 
