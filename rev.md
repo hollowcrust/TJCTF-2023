@@ -637,15 +637,15 @@ for i in range(1, 8):
     
 prod = []
 for f in factors:
-     for combi in f:
-         tmp = 1
-         for j in combi:
-             tmp *= j
-         if tmp not in prod:
-             prod.append(tmp)
+    for combi in f:
+        tmp = 1
+        for j in combi:
+            tmp *= j
+        if tmp not in prod:
+            prod.append(tmp)
 for i in prod:
-     if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
-         print(i, 0x33D5D816326AAD//i)
+    if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
+        print(i, 0x33D5D816326AAD//i)
 ```
   - Running the script gives only one pair of `(v6, v7)` of `(131313131, 111111111)`.<br/>
 
@@ -723,9 +723,9 @@ for f in factors:
 v6, v7 = 0, 0
 
 for i in prod:
-     if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
-         v6 = i
-         v7 = 0x33D5D816326AAD // i
+    if (35 * (((3 * i) ^ 0xB6D8) % 0x521) % 0x5EB == 1370) and ((35 * ((5 * (0x33D5D816326AAD // i) % 0x1E61) | 0x457) - 5) % 0x3E8 == 80):
+        v6 = i
+        v7 = 0x33D5D816326AAD // i
 
 #for part 3
 op = ['ask her about some flags', 'ask her about her new album', 'ask her about her tour']
