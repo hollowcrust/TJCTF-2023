@@ -624,7 +624,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
     exit(0);
   }
 ```
-  - Notice that we need to find suitable `v6` and `v7` such that eventually `v6 % v7 == 20202020 && v7 * v6 == 0x33D5D816326AADLL` to pass, which means `v6` and `v7` are factors of `0x33D5D816326AAD = 14590347874298541 = 3 x 3 x 29 x 37 x 409 x 11071 x 333667`.
+  - Notice that we need to find suitable `v6` and `v7` such that eventually `v6 % v7 == 20202020 && v7 * v6 == 0x33D5D816326AAD` to pass, which means `v6` and `v7` are factors of `0x33D5D816326AAD = 14590347874298541 = 3 x 3 x 29 x 37 x 409 x 11071 x 333667`.
   - To find `v6` and `v7`, I used the following script which finds all possible values of `v6` and `v7` that pass the conditions `35 * (((3 * v6) ^ 0xB6D8) % 0x521) % 0x5EB == 1370` and `(35 * ((5 * v7 % 0x1E61) | 0x457) - 5) % 0x3E8 != 80` respectively.
 
 #### Finding ~~Nemo~~ v6 and v7 (in Python)
