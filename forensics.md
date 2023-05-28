@@ -27,7 +27,7 @@
 <img width="696" alt="Screenshot 2023-05-26 at 22 10 12" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/42f45a61-4362-4ef9-89b1-d210faf9a7a1"><br/>
 
 ### nothing.png
-![nothing](https://github.com/hollowcrust/TJCTF-2023/assets/72879387/e532dbed-07f9-475d-957b-dd642c500363)<br/>
+![nothing](https://github.com/hollowcrust/TJCTF-2023/assets/72879387/a8535a72-53e0-4104-b394-f4e52ed14946)<br/>
   
   Using `binwalk` on the image, we can extract an underlying password-protected zip file. Checking the EXIF of the original image using `exiftool` gives:<br/><br/>
   <img width="532" alt="Screenshot 2023-05-26 at 18 12 39" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/2f2a0c0d-29b7-471f-a381-5037e52720a9"><br/><br/>
