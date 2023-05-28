@@ -5,7 +5,7 @@ The competition occured from 00:00 (UTC+0) 26 May 2023 to 00:00 (UTC+0) 28 May 2
 
 My team managed to captured 19 / 39 flags (or 17 / 37 non-giveaway flags) throughout 48 hours of competition.<br/>
 
-<img width="341" alt="Screenshot 2023-05-27 at 23 42 08" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/780bde5d-c64a-49a4-a8f1-e145d488695c"><br/><br/>
+<img width="340" alt="Screenshot 2023-05-28 at 08 17 05" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/78548615-67c0-4781-b711-531a31f00bef"><br/>
 
 This repository contains the writeups to the challenges that I solved (except the giveaway ones in Misc), which are:<br/>
 
