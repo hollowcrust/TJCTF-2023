@@ -41,6 +41,7 @@ c.execute(string)
 ```
 
 - We can perform an SQL injection whereby if we put `' OR 1=1; --` in the `Name` field, the SQL command above will become `"SELECT description FROM notes WHERE owner == '' OR 1=1; --';"`. The `--` turns everything behind it on that line into a comment, and since `'' OR 1=1` always return `True`, the website will display everything from every `owner` in the database.</br>
+- Since `admin` is the first entry in the database, the first few lines displayed will contail the flag.
 
 <img width="635" alt="Screenshot 2023-05-27 at 00 31 44" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/38040aa9-7b32-4c85-9990-4c8548a1c184"><br/>
 
