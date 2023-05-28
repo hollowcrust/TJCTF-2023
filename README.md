@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains the writeups to the challenges that I solved (except the giveaway ones in Misc), which are:<br/>
+This repository contains the writeups to the challenges that I solved in TJCTF 2023 (except the giveaway ones in Misc), which are:<br/>
 
 ### Crypto
   1. baby-rsa
