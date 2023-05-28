@@ -8,7 +8,7 @@
   
   https://github.com/hollowcrust/TJCTF-2023/assets/72879387/a284d3fe-a4ec-49e2-a64e-6f34a644ac52
   
-  - Decoding the Morse code signals in the file either by hand or via https://morsecode.world/international/decoder/audio-decoder-adaptive.html gives the following message<br />
+  - Decoding the Morse code signals in the file either by hand or using an <a href="https://databorder.com/transfer/morse-sound-receiver/">online decoder</a> gives the following message<br />
     
   ```
   .... .. / .... --- .-- / .- .-. . / -.-- --- ..- / -.. --- .. -. --. .-.-.- / - .... . / ..-. .-.. .- --. / .. ... / - .--- -.-. - ..-. - .... .. ... .. ... .- .-.. .-.. --- -. . .-- --- .-. -.. .-.. -- .- ---
