@@ -14,7 +14,7 @@
   c = 2449457955338174702664398437699732241330055959255401949300755756893329242892325068765174475595370736008843435168081093064803408113260941928784442707977000585466461075146434876354981528996602615111767938231799146073229307631775810351487333
   ```
   
-  Since `e = 3` is very small, and `c` is considerably smaller than `n` such that `m^e mod n = m^e = c`, --> `m = c ** (1/3)`. Hence we can just take the cube root of `c` and convert it to plaintext.
+  - Since `e = 3` is very small, and `c` is considerably smaller than `n` such that `m^e mod n = m^e = c`, --> `m = c ** (1/3)`. Hence we can just take the cube root of `c` and convert it to plaintext.
   
 ### Flag
   ```
@@ -36,7 +36,7 @@ p = 1229738390174058447015157731865115033798871680704931785142029847812893223284
 g^x = s mod p
 flag = tjctf{x}
 ```
-This is a Discrete Logarithm Problem (as suggested by the name dlp). I used this <a href="https://www.alpertron.com.ar/DILOG.HTM">website</a> to help me calculate the value of `x`.<br/>
+  - This is a Discrete Logarithm Problem (as suggested by the name dlp). I used this <a href="https://www.alpertron.com.ar/DILOG.HTM">website</a> to help me calculate the value of `x`.<br/>
   
 <img width="1437" alt="Screenshot 2023-05-27 at 08 34 01" src="https://github.com/hollowcrust/TJCTF-2023/assets/72879387/1ad71e7c-d92c-4169-9eae-32afa498ed62"><br/>
 
