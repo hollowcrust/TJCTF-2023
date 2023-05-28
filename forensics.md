@@ -13,7 +13,7 @@
   ```
   .... .. / .... --- .-- / .- .-. . / -.-- --- ..- / -.. --- .. -. --. .-.-.- / - .... . / ..-. .-.. .- --. / .. ... / - .--- -.-. - ..-. - .... .. ... .. ... .- .-.. .-.. --- -. . .-- --- .-. -.. .-.. -- .- ---
   ```
-  which translates to: `HI HOW ARE YOU DOING. THE FLAG IS TJCTFTHISISALLONEWORDLMAO`<br/>
+  - This translates to: `HI HOW ARE YOU DOING. THE FLAG IS TJCTFTHISISALLONEWORDLMAO`<br/>
   
 ### Flag  
   ```
