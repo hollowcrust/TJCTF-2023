@@ -680,7 +680,7 @@ for i in prod:
   }
 ```
   - There are 3 operations applied to `v4`: `+1`, `+22`, and `squaring v4`, and we have to achieve `2351` from `0` in <strong>exactly</strong> 12 operations.
-  - Using some quick maths `2351 = 48 ** 2 + 47 = (0 + 22 + 22 + 1 + 1 + 1 + 1) ** 2 + (22 + 22 + 1 + 1 + 1)` which uses exactly 12 operations. Hence one of the possible lists of input is
+  - Using some "quick maths" `2351 = 48 ** 2 + 47 = (0 + 22 + 22 + 1 + 1 + 1 + 1) ** 2 + (22 + 22 + 1 + 1 + 1)` which uses exactly 12 operations. Hence one of the possible lists of input is
 ```
 ask her about her tour
 ask her about her tour
