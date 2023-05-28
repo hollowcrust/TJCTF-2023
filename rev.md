@@ -697,7 +697,7 @@ ask her about some flags
 ```
 <br/>
 
-4. Combining everything and we can obtain the flag. I recommend using `pwntools` to send the input.
+4. Combine everything and we can obtain the flag. I recommend using `pwntools` to send the input.
 
 ### Solution code (in Python)
 
